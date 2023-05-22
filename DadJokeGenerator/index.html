@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Dad Joke Generator</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+  <div>
+  <div class="col">
+    <h1>Dad Joke Generator</h1>
+    
+      <button>
+        <span>
+          <p>New Joke</p>
+        </span>
+        <svg viewBox="0 0 22 22" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <line x1="15" y1="16" x2="19" y2="12"></line>
+          <line x1="15" y1="8" x2="19" y2="12"></line>
+        </svg>
+  
+        <svg id="stop" class="spinner" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z" />
+        </svg>
+  
+      </button>
+      
+    </div>
+    <div class="instruct">
+     <p>Click the on the jokes to remove them</p>
+      </div>
+    </div>
+ 
+
+<!-- partial:index.partial.htmlz -->
+<div class="list">
+<ul id="jokes">
+
+ 
+</ul>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

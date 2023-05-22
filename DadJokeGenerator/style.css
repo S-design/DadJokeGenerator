@@ -1,0 +1,296 @@
+@import url('https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* { margin: 0; 
+  padding: 0; 
+  box-sizing: border-box;
+  cursor: pointer;
+}
+body {
+  padding: 2rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 25px;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: #060606;
+
+}
+h1 {
+  color: #fff;
+  margin: 10px 20px 10px 20px;
+  align-content: center;
+  font-size: 50px;
+}
+button {
+  margin: 20px 20px 5px 20px;
+  align-content: center;
+}
+
+.col {
+  display: inline;
+  display:flex;
+}
+.instruct {
+  display: block;
+  padding-right: 30px;
+  margin: 20px 20px 0px 20px;
+  align-content: center;
+}
+
+ul{
+  width: min(100%, 60rem);
+  overflow: hidden;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 4rem);
+  list-style: none;
+  perspective: 1000px;
+  display: grid;
+  row-gap: 0.5rem;
+}
+ul li.card{
+  position: relative;
+  padding-block: 1.5rem;
+  padding-inline: 2rem;
+  background-color: var(--bg-color);
+  background-image: linear-gradient(to right, rgb(0 0 0 / .15), transparent);
+  transform-style: preserve-3d;
+  color: var(--color);
+  
+  display: grid;
+  grid-template: 'icon' 'title' 'content';
+  row-gap: 0.5rem;
+  column-gap: 2rem;
+}
+ul li.card::before, ul li.card::after {
+  --side-rotate: 60deg;
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transform-origin: calc(50% - (50% * var(--ry))) 50%  ;
+  transform: rotateY(calc(var(--side-rotate) * var(--ry)));
+  background-color: inherit;
+  background-image: linear-gradient(calc(90deg * var(--ry)), rgb(0 0 0 / .25), rgb(0 0 0 / .5));  
+}
+ul li.card::before {--ry: -1; right: 100% }
+ul li.card::after {--ry: 1; left: 100% }
+
+ul li.card .icon {
+  grid-area: icon;
+  display: grid;
+  place-items: center;
+}
+ul li.card .icon i {
+  font-size: 2rem;
+}
+ul li.card .title{
+  grid-area: title;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: center;
+}
+ul li.card .content{
+  grid-area: content;
+}
+
+@media (min-width: 30rem){
+  ul li.card {
+    grid-template: 'icon title' 'icon content';
+    text-align: left;
+  }
+  ul li.card .title { text-align: left }
+}
+.list {
+  max-height: var(--container-height);
+  scroll-snap-type: y mandatory;
+  overscroll-behavior-y: contain;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-timeline: listTimeline vertical;
+}
+:root {
+  --container-height: 500px;
+}
+
+:root {
+  --hue: 190deg;
+  --sat: 50%;
+  --blur: 0px;
+}
+
+button {
+  font-size: 1vw;
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  background-color: var(--clr);
+  background-image: linear-gradient(180deg, var(--clr2) var(--gradgap), transparent calc(100% - var(--gradgap)));
+  background-repeat: no-repeat;
+  background-position: center var(--gradoffset);
+  background-size: 50% 100%;
+  padding: 1.1em 1.5em;
+  border-radius: 2em;
+  border: none;
+  box-shadow: 0 -0.5em 0.5em transparent, 0 0.5em 0.5em transparent, 0 0.25em 0.3em -0.2em hsla(var(--hue), var(--sat), 50%, 0.46), 0 0.25em 0.75em hsla(var(--hue), calc(var(--sat) - 10%), 40%, 0.3);
+  position: relative;
+  transition: all 0.5s ease;
+  outline: none;
+  max-width: 200px;
+  max-height: 50px;
+}
+/* @media screen and (min-width: 400px) {
+  button {
+    font-size: 3vw;
+  } 
+}*/
+button::before, button::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+  border-radius: 5em;
+}
+button::before {
+  background-image: radial-gradient(ellipse, hsla(var(--hue), 100%, 90%, 0.8) 20%, transparent 50%, transparent 200%), linear-gradient(90deg, #404040 -10%, transparent 30%, transparent 70%, #404040 110%);
+  box-shadow: inset 0 0.25em 0.75em rgba(0, 0, 0, 0.8), inset 0 -0.05em 0.2em rgba(255, 255, 255, 0.4), inset 0 -1px 3px hsla(var(--hue), 80%, 50%, 0.75);
+  background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  background-size: 200% 80%, cover;
+  background-position: center 220%;
+  mix-blend-mode: overlay;
+  filter: blur(calc(var(--blur) * 0.5));
+}
+button::after {
+  background: linear-gradient(180deg, hsla(var(--hue2), 100%, 90%, 0.9), hsla(var(--hue2), calc(var(--sat2)*0.7), 50%, 0.75) 40%, transparent 80%);
+  top: 0.075em;
+  left: 0.75em;
+  right: 0.75em;
+  bottom: 1.4em;
+  filter: blur(var(--blur));
+  mix-blend-mode: screen;
+}
+button:hover, button:active, button:focus {
+  outline: none;
+  box-shadow: 0 -0.2em 1em hsla(var(--hue2), 70%, 80%, 0.3), 0 0.5em 1.5em hsla(var(--hue), 70%, 80%, 0.5), 0 0.25em 0.3em -0.2em hsl(var(--hue), 90%, 70%), 0 0.25em 0.5em hsla(var(--hue), 20%, 30%, 0.2), inset 0 -2px 2px rgba(255, 255, 255, 0.2);
+  background-position: center calc( var(--gradoffset) - 0.75em );
+}
+
+.static button {
+  position: relative;
+}
+
+.static button .spinner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(0.75em) translateX(-50%);
+  opacity: 0;
+  margin: 0;
+  font-size: 2em;
+  mix-blend-mode: overlay;
+}
+
+.static button span,
+.static button svg,
+.static button .spinner {
+  transition: all 0.33s ease;
+}
+
+.static button:active span,
+.static button:active svg:not(.spinner),
+.static button:focus span,
+.static button:focus svg:not(.spinner) {
+  transform: translateY(-1em);
+  opacity: 0;
+  filter: blur(5px);
+}
+.static button:active .spinner,
+.static button:focus .spinner {
+  transform: translateY(-0.5em) translateX(-50%);
+  opacity: 1;
+}
+
+body {
+  --font: "Noto Sans", sans-serif;
+  color: white;
+  background: linear-gradient(45deg, #48B7CD,  #67399B);
+
+  font-family: var(--font);
+  font-weight: 200;
+  padding: 2vw;
+  text-align: center;
+}
+
+button {
+  font-family: var(--font);
+  display: flex;
+}
+
+svg {
+  height: 1em;
+  width: auto;
+  margin-left: 0.33em;
+}
+
+button svg,
+button span {
+  display: inline-flex;
+  align-content: center;
+  align-self: center;
+  filter: drop-shadow(0 1px 0 hsla(var(--hue), 90%, 88%, 1));
+}
+
+h1, p {
+  grid-column: 1/-1;
+}
+
+body, html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.spinner path {
+  transform-origin: center;
+  -webkit-animation: spin 0.75s infinite linear;
+          animation: spin 0.75s infinite linear;
+}
+
+@-webkit-keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.icon{
+  float: left;
+  max-width: 32px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: #5dc0d3;
+  border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #4d2975;
+  border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5709b1;
+}
+.pointer {
+  cursor: pointer;
+}
